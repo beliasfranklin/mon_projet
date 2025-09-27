@@ -1,0 +1,1 @@
+<br><a href="{{url($chemin)}}">{{$nom}}</a>

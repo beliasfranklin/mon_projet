@@ -1,0 +1,1 @@
+<button onclick="confirm('voulez vous effectuer cette action ?');"></button>
