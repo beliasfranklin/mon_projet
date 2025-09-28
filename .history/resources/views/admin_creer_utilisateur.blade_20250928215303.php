@@ -152,7 +152,7 @@
 <body>
     <div class="conteneur_menus">
         <div class="conteneur_titre_logo_minsante">
-            <img src="logo-minsante.png" alt="logo-minsante" class="logo-minsante"><br>
+            <img src="favicon.svg" alt="logo-minsante" class="logo-minsante"><br>
             <span>DEP-MINSANTE</span><br>
             @if($user->id==$users_roles->id_user && $users_roles->id_role==26)
                 <span class="font-size: 15px;">ADMIN</span>

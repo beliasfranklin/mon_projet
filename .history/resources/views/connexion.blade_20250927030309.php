@@ -169,14 +169,10 @@
                 font-size: 1em;
                 height: 36px;
            }
-           #toggleIcon{
-                position: absolute;
-                right: 15px;
-                top: 38px;
-                cursor: pointer;
-            }
-            #toggleIcon:hover {
-                color: darkslateblue;   
+            #toggleIcon {
+                top: 34px; /* Adjust the position as needed */
+                right: 10px;
+                position: absolute; /* Ensure it's positioned relative to the parent */ 
             }
         }
     </style>
@@ -208,6 +204,7 @@
                         <b><span style="font-size: 1.1em; color:#473d83;">Mot de passe</span></b><br>
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" name="password" placeholder="Mot de passe"/><br>
+                        <i id="toggleIcon" class="fa-solid fa-eye" style="color:#473d83;font-size:1.2em;"></i>
                         @error('password')
                             <div class="error" style="color: #b91c1c; font-size: 0.95em;">{{ $message }}</div> <br>
                         @enderror

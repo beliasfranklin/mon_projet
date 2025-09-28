@@ -141,11 +141,11 @@ class MonController extends Controller
                 'password.max' => 'Le mot de passe ne doit pas dépasser 255 caractères.',
                 'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
                 'password.regex' => 'Le mot de passe doit contenir au moins une minuscule, une majuscule et un chiffre.',
-                'password_confirmation.required' => 'La confirmation du mot de passe est requise.',
-                'password_confirmation.min' => 'La confirmation doit contenir au moins 8 caractères.',
-                'password_confirmation.max' => 'La confirmation ne doit pas dépasser 255 caractères.',
-                'password_confirmation.regex' => 'La confirmation doit contenir au moins une minuscule, une majuscule et un chiffre.',
-                'password_confirmation.confirmed' => 'La confirmation du mot de passe ne correspond pas.'
+                'confirm_password.required' => 'Le mot de passe est requis.',
+                'confirm_password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+                'confirm_password.max' => 'Le mot de passe ne doit pas dépasser 255 caractères.',
+                'confirm_password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+                'confirm_password.regex' => 'Le mot de passe doit contenir au moins une minuscule, une majuscule et un chiffre.'
             ]
         );
 

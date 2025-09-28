@@ -1,3 +1,93 @@
+<div class="container mt-4">
+    <h2>Gestion des Utilisateurs</h2>
+    <form method="GET" action="{{ route('admin.users') }}" class="mb-3">
+        <div class="row align-items-end">
+            <div class="col-md-3">
+                <label for="search">Recherche</label>
+                <input type="text" name="search" id="search" class="form-control" placeholder="Nom, Email" value="{{ request('search') }}">
+            </div>
+            <div class="col-md-2">
+                <label for="statut">Statut</label>
+                <select name="statut" id="statut" class="form-control">
+                    <option value="">Tous</option>
+                    <option value="actif" {{ request('statut')=='actif' ? 'selected' : '' }}>Actif</option>
+                    <option value="inactif" {{ request('statut')=='inactif' ? 'selected' : '' }}>Inactif</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="role">Rôle</label>
+                <select name="role" id="role" class="form-control">
+                    <option value="">Tous</option>
+                    <option value="admin" {{ request('role')=='admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="user" {{ request('role')=='user' ? 'selected' : '' }}>Utilisateur</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="date">Date d'inscription</label>
+                <select name="date" id="date" class="form-control">
+                    <option value="">Toutes</option>
+                    <option value="7j" {{ request('date')=='7j' ? 'selected' : '' }}>7 derniers jours</option>
+                    <option value="30j" {{ request('date')=='30j' ? 'selected' : '' }}>30 derniers jours</option>
+                    <option value="custom" {{ request('date')=='custom' ? 'selected' : '' }}>Personnalisée</option>
+                </select>
+            </div>
+            <div class="col-md-2 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Appliquer</button>
+                <a href="{{ route('admin.users') }}" class="btn btn-secondary">Reset</a>
+            </div>
+        </div>
+        @if(request('date')=='custom')
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <input type="date" name="date_debut" class="form-control" value="{{ request('date_debut') }}">
+            </div>
+            <div class="col-md-3">
+                <input type="date" name="date_fin" class="form-control" value="{{ request('date_fin') }}">
+            </div>
+        </div>
+        @endif
+    </form>
+    <div class="mb-2">
+        <span class="badge bg-info">{{ $users->count() }} résultats trouvés</span>
+    </div>
+    <!-- Tableau des utilisateurs -->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Statut</th>
+                    <th>Rôle</th>
+                    <th>Date d'inscription</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($users as $user)
+                <tr>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->statut }}</td>
+                    <td>{{ $user->role }}</td>
+                    <td>{{ $user->created_at->format('d/m/Y') }}</td>
+                    <td>
+                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-info">Voir</a>
+                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-warning">Modifier</a>
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                @empty
+                <tr><td colspan="6">Aucun utilisateur trouvé.</td></tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
 @php
     use App\Models\StatutUser;
     $statut_user=StatutUser::all();

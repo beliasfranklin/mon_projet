@@ -1,3 +1,15 @@
+// Route de test pour notification WhatsApp
+use App\Notifications\WhatsAppNotification;
+use App\Models\User;
+
+Route::get('/test-whatsapp', function() {
+    $user = User::first(); // Utilise le premier utilisateur pour le test
+    $phone = request('phone', '+237699000000');
+    $message = request('message', 'Test de notification WhatsApp depuis DEP-MINSANTE');
+    $user->notify(new WhatsAppNotification($message, $phone));
+    return 'Notification WhatsApp envoyée (simulation).';
+});
+
 <?php
 
 require __DIR__.'/api.php';
@@ -167,13 +179,6 @@ Route::get('/historiques',[MonController::class,'afficherHistorique']);
 Route::post('/resultat-filtre',[MonController::class,'afficherResultatHistorique']);
 //si l'admin veut gérer les utilisateurs
 Route::get('/gerer_utilisateurs',[MonController::class,'gererUtilisateurs']);
-Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/users', [App\Http\Controllers\AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/historiques', [App\Http\Controllers\AdminHistoriqueController::class, 'index'])->name('admin.historiques');
-    Route::get('/reporting', [App\Http\Controllers\AdminReportingController::class, 'index'])->name('admin.reporting');
-    Route::get('/settings', [App\Http\Controllers\AdminSettingsController::class, 'index'])->name('admin.settings');
-});
 //si l'admin veut créer un compte
 Route::get('/creer_utilisateur',[MonController::class,'creerCompte']);
 //le système va créer le compte

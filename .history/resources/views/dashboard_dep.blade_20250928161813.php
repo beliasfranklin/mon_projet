@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="connexion-style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" href="logo-minsante.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <title>Dashboard - DEP MINSANTE</title>
     <style>
@@ -242,19 +241,16 @@
                 </div>
             </div>
             <p>
-                <span class="users-ext">Membres  Externes</span><br>
-                <table>
-                     t
-                </table>
+                <span class="users-ext">Utilisateurs Externes</span>
             </p>
             <p>
-                <span class="users-dep">Membres de la DEP</span>
+                <span class="users-dep">Utilisateurs membres de la DEP</span>
             </p>
             <p>
-                <span class="users-cpp">Membres de la CPP</span>   
+                <span class="users-cpp">Utilisateurs membres de la CPP</span>   
             </p>
             <p>
-                <span class="users-cei">Membres de la CEI</span>       
+                <span class="users-cei">Utilisateurs membres de la CEI</span>       
             </p>   
         </div>   
     @endif

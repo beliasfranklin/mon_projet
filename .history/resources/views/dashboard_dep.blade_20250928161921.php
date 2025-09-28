@@ -242,19 +242,16 @@
                 </div>
             </div>
             <p>
-                <span class="users-ext">Membres  Externes</span><br>
-                <table>
-                     t
-                </table>
+                <span class="users-ext">Utilisateurs Externes</span>
             </p>
             <p>
-                <span class="users-dep">Membres de la DEP</span>
+                <span class="users-dep">Utilisateurs membres de la DEP</span>
             </p>
             <p>
-                <span class="users-cpp">Membres de la CPP</span>   
+                <span class="users-cpp">Utilisateurs membres de la CPP</span>   
             </p>
             <p>
-                <span class="users-cei">Membres de la CEI</span>       
+                <span class="users-cei">Utilisateurs membres de la CEI</span>       
             </p>   
         </div>   
     @endif

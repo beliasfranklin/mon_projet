@@ -6,6 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Connexion - DEP MINSANTE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script>
+            function togglePassword(id, iconId) {
+                var input = document.getElementById(id);
+                var icon = document.getElementById(iconId);
+                if (input.type === "password") {
+                    input.type = "text";
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = "password";
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            }
+        </script>
     <link rel="stylesheet" href="connexion-style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -168,15 +183,6 @@
                 width: 100%;
                 font-size: 1em;
                 height: 36px;
-           }
-           #toggleIcon{
-                position: absolute;
-                right: 15px;
-                top: 38px;
-                cursor: pointer;
-            }
-            #toggleIcon:hover {
-                color: darkslateblue;   
             }
         }
     </style>
@@ -207,7 +213,12 @@
                     <p class="champ-mdp">
                         <b><span style="font-size: 1.1em; color:#473d83;">Mot de passe</span></b><br>
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="password" placeholder="Mot de passe"/><br>
+                            <div style="position:relative;display:flex;align-items:center;">
+                                <input type="password" name="password" id="passwordInput" placeholder="Mot de passe" style="padding-right:38px;width:100%;"/>
+                                <span onclick="togglePassword('passwordInput','toggleIcon')" style="position:absolute;right:10px;cursor:pointer;">
+                                    <i id="toggleIcon" class="fa-solid fa-eye" style="color:#473d83;font-size:1.2em;"></i>
+                                </span>
+                            </div>
                         @error('password')
                             <div class="error" style="color: #b91c1c; font-size: 0.95em;">{{ $message }}</div> <br>
                         @enderror

@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo-minsante.png" type="image/x-icon">
     <title>Créer un nouvel utilisateur - DEP MINSANTE</title>
     <style>
         body{
@@ -152,7 +151,7 @@
 <body>
     <div class="conteneur_menus">
         <div class="conteneur_titre_logo_minsante">
-            <img src="logo-minsante.png" alt="logo-minsante" class="logo-minsante"><br>
+            <img src="favicon.svg" alt="logo-minsante" class="logo-minsante"><br>
             <span>DEP-MINSANTE</span><br>
             @if($user->id==$users_roles->id_user && $users_roles->id_role==26)
                 <span class="font-size: 15px;">ADMIN</span>

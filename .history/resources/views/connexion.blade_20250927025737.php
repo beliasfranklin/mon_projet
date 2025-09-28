@@ -168,15 +168,6 @@
                 width: 100%;
                 font-size: 1em;
                 height: 36px;
-           }
-           #toggleIcon{
-                position: absolute;
-                right: 15px;
-                top: 38px;
-                cursor: pointer;
-            }
-            #toggleIcon:hover {
-                color: darkslateblue;   
             }
         }
     </style>

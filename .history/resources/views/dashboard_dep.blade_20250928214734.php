@@ -254,7 +254,7 @@
                 <span class="users-cpp">Membres de la CPP</span>   
             </p>
             <p>
-                <span class="users-cei">Membres de la CEI</span>       
+                <span class="users-cei">Utilisateurs membres de la CEI</span>       
             </p>   
         </div>   
     @endif

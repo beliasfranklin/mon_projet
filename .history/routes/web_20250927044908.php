@@ -1,3 +1,4 @@
+
 <?php
 
 require __DIR__.'/api.php';
@@ -167,13 +168,6 @@ Route::get('/historiques',[MonController::class,'afficherHistorique']);
 Route::post('/resultat-filtre',[MonController::class,'afficherResultatHistorique']);
 //si l'admin veut gérer les utilisateurs
 Route::get('/gerer_utilisateurs',[MonController::class,'gererUtilisateurs']);
-Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('/users', [App\Http\Controllers\AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/historiques', [App\Http\Controllers\AdminHistoriqueController::class, 'index'])->name('admin.historiques');
-    Route::get('/reporting', [App\Http\Controllers\AdminReportingController::class, 'index'])->name('admin.reporting');
-    Route::get('/settings', [App\Http\Controllers\AdminSettingsController::class, 'index'])->name('admin.settings');
-});
 //si l'admin veut créer un compte
 Route::get('/creer_utilisateur',[MonController::class,'creerCompte']);
 //le système va créer le compte
