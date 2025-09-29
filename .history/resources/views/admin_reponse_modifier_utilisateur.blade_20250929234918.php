@@ -342,6 +342,12 @@
                 window.location.href="/supprimer_utilisateur/{{$u->id}}";
             }
         }
+        function debloquerUtilisateur(event){
+            event.preventDefault();
+            if(confirm("Voulez-vous débloquer cet utilisateur ?")){
+                window.location.href = "/debloquer_utilisateur/{{$u->id}}";
+            }
+        }
     </script>
 
 </body>

@@ -281,7 +281,7 @@ Route::get('/modifier_utilisateur/{id}',function($id){
         $conn->update(['estConnecte'=> 1]);
         $statut_user=StatutUser::where('id_user',$user_id)->get()->first();
         $statut_user->update(['statut'=>'disponible']);    
-        return view('admin.admin_modifier_utilisateur',compact('users_roles','user1','user','tel','role_user','nom_role_user','structure_user','nom_structure_user','autres_roles','autres_structures'));
+        return view('admin_modifier_utilisateur',compact('users_roles','user1','user','tel','role_user','nom_role_user','structure_user','nom_structure_user','autres_roles','autres_structures'));
     }else{
         return view('welcome');
     }

@@ -330,7 +330,7 @@ class MonController extends Controller
             $action->nomAction="l'utilisateur ".$user->name."a consulté l'historique des actions";
             $action->id_user=$user->id;
             $action->save();
-            return view('admin.admin_consulter_historiques',compact('user','users_roles','hist','users_hist'));
+            return view('admin_consulter_historiques',compact('user','users_roles','hist','users_hist'));
         }else{
             return redirect('/');
         }
@@ -627,7 +627,7 @@ public function afficherReponseModificationUtilisateur()
             $roles=Roles::all();  //tout les roles 
             $structures=Structure::all();  //toutes les structures
             $users_structures=UsersStructures::all();  //les structures auxquelles sont rattachés chaque utilisateurs
-            return view('admin.admin_reponse_supprimer_utilisateur',compact('user','users_roles','roles','structures','users_structures','telephone','user_role','users'));
+            return view('admin_reponse_supprimer_utilisateur',compact('user','users_roles','roles','structures','users_structures','telephone','user_role','users'));
 
         }
     }
@@ -647,7 +647,7 @@ public function afficherReponseModificationUtilisateur()
             $roles=Roles::all();  //tout les roles 
             $structures=Structure::all();  //toutes les structures
             $users_structures=UsersStructures::all();  //les structures auxquelles sont rattachés chaque utilisateurs
-            return view('admin.admin_reponse_bloquer_utilisateur',compact('user','users_roles','roles','structures','users_structures','telephone','user_role','users'));
+            return view('admin_reponse_bloquer_utilisateur',compact('user','users_roles','roles','structures','users_structures','telephone','user_role','users'));
 
         }
     }
@@ -668,7 +668,7 @@ public function afficherReponseModificationUtilisateur()
             $structures=Structure::all();  //toutes les structures
             $users_structures=UsersStructures::all();  //les structures auxquelles sont rattachés chaque utilisateurs
             $statut_user=StatutUser::all();
-            return view('admin.admin_reponse_debloquer_utilisateur',compact('user','users_roles','roles','structures','users_structures','telephone','user_role','users','statut_user'));
+            return view('admin_reponse_debloquer_utilisateur',compact('user','users_roles','roles','structures','users_structures','telephone','user_role','users','statut_user'));
         }
     }
     // Ministre envoyant un dossier interne

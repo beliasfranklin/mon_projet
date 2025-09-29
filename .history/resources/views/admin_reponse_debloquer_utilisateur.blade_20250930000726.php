@@ -232,7 +232,7 @@
     </div>
     <div class="espace_travail">
         <div class="boite-reponse" style="width: 100%; height: 50px; background-color: rgb(204, 255, 204); color: darkgreen; display: flex;  align-items: center; font-size: 20px; font-weight: bold;">
-            <i class="fa-solid fa-circle-check" style="margin-left:10px;"></i> Compte crée avec succès !
+            <i class="fa-solid fa-circle-check" style="margin-left:10px;"></i> Compte débloqué avec succès !
         </div>
         <span class="utilisateurs"><i class="fa-solid fa-users"></i><span class="users">Gérer Utilisateurs</span></span><br>
         <p>   
@@ -341,7 +341,7 @@
         }
         
         function supprimerUtilisateur(event){
-            if(confirm("voulez vous supprimer cet utilisateur")==true){
+            if(confirm("voulez vous supprimer cet utilisateur ?")==true){
                 window.location.href="/supprimer_utilisateur/{{$u->id}}";
             }
         }

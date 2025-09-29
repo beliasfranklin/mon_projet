@@ -330,7 +330,7 @@ class MonController extends Controller
             $action->nomAction="l'utilisateur ".$user->name."a consulté l'historique des actions";
             $action->id_user=$user->id;
             $action->save();
-            return view('admin.admin_consulter_historiques',compact('user','users_roles','hist','users_hist'));
+            return view('admin_consulter_historiques',compact('user','users_roles','hist','users_hist'));
         }else{
             return redirect('/');
         }

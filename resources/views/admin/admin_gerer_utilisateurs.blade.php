@@ -1,3 +1,7 @@
+@php
+    use App\Models\StatutUser;
+    $statut_user=StatutUser::all();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo-minsante.png" type="image/x-icon">
     <title>Gerer Utilisateurs - DEP MINSANTE</title>
     <style>
         body{
@@ -207,9 +212,9 @@
 <body>
     <div class="conteneur_menus">
         <div class="conteneur_titre_logo_minsante">
-            <img src="favicon.svg" alt="logo-minsante" class="logo-minsante"><br>
+            <img src="logo-minsante.png" alt="logo-minsante" class="logo-minsante"><br>
             <span>DEP-MINSANTE</span><br>
-            @if($user->id==$users_roles->id_user && $users_roles->id_role==23)
+            @if($user->id==$users_roles->id_user && $users_roles->id_role==26)
                 <span class="font-size: 15px;">ADMIN</span>
                 <ul class="menus">
                 <li><a href="/dashboard_dep"><i class="fa-solid fa-gauge"></i>Tableau de bord</a></li>
@@ -226,9 +231,6 @@
         <span>{{$user->name}}</span>
     </div>
     <div class="espace_travail">
-        <div class="boite-reponse" style="width: 100%; height: 50px; background-color: rgb(204, 255, 204); color: darkgreen; display: flex;  align-items: center; font-size: 20px; font-weight: bold;">
-            <i class="fa-solid fa-circle-check" style="margin-left:10px;"></i> Compte utilisateur supprimé avec succès !
-        </div>
         <span class="utilisateurs"><i class="fa-solid fa-users"></i><span class="users">Gérer Utilisateurs</span></span><br>
         <p>   
             <form method="post" action="">
@@ -243,10 +245,9 @@
         <span class="liste-historiques">
             Liste des Utilisateurs
         </span><br>
-        <form action="/creer_utilisateur" method="get">
-            @csrf
-            <input type="submit" value="Créer un nouvel utilisateur" class="bouton-validation">
-        </form><br><br>
+        <a href="/creer_utilisateur">
+            <button class="bouton-validation">Creer un nouvel utilisateur</button>
+        </a><br><br>
         <table>
             <thead>
                 <tr>
@@ -256,6 +257,7 @@
                     <th>Role</th>
                     <th>Structure</th>
                     <th>Téléphone</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr>      
             </thead>
@@ -268,7 +270,7 @@
                     <td>
                         @foreach ($user_role as $ur)
                             @if ($u->id==$ur->id_user)
-                                @foreach ($all_roles as $r)
+                                @foreach ($roles as $r)
                                     @if ($r->id==$ur->id_role)
                                         {{$r->nomRole}}    
                                     @endif         
@@ -296,9 +298,16 @@
                         @endforeach
                     </td>
                     <td>
+                        @foreach ($statut_user as $su)
+                            @if ($u->id==$su->id_user)
+                                {{$su->statut}}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
                         <ul>
                             <a href="/modifier_utilisateur/{{$u->id}}"><li><i class="fa-solid fa-user-pen"></i>Modifier</li></a>
-                            <a href="/supprimer_utilisateur/{{$u->id}}" onclick="supprimerUtilisateur()" class="user" data-user-id="{{$u->id}}"><li><i class="fa-solid fa-user-xmark"></i>Supprimer</li></a>
+                            <a href="/supprimer_utilisateur/{{$u->id}}" onclick="supprimerUtilisateur(event)" class="user" data-user-id="{{$u->id}}"><li><i class="fa-solid fa-user-xmark"></i>Supprimer</li></a>
                             @php
                                 $statut = '';
                                 foreach ($statut_user as $su) {
@@ -321,11 +330,22 @@
         </table><br><br>
     </div>
     <script>
-        
         function seDeconnecter(event){
             event.preventDefault();  //empêche la redirection par defaut du lien
             if(confirm("voulez vous deconnecter ?")){
                 window.location.href="/se deconnecter/{{$user->id}}";
+            }
+        }
+        
+        function supprimerUtilisateur(event){
+            if(confirm("voulez vous supprimer cet utilisateur ?")==true){
+                window.location.href="/supprimer_utilisateur/{{$u->id}}";
+            }
+        }
+        function bloquerUtilisateur(event){
+            event.preventDefault();  //empêche la redirection par defaut du lien
+            if(confirm("voulez vous bloquer cet utilisateur ?")){
+                window.location.href="/bloquer_utilisateur/{{$u->id}}";
             }
         }
     </script>
